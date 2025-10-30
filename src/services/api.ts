@@ -107,9 +107,35 @@ class ApiClient {
     return this.client.get(`/verification/${id}`)
   }
 
+  // Verification endpoints
+  async getMyVerifications(page: number = 1, limit: number = 10) {
+    return this.client.get(`/verification/my-verifications?page=${page}&limit=${limit}`)
+  }
+
   // Health check
   async healthCheck() {
     return this.client.get('/health')
+  }
+
+  // Generic request methods
+  async get<T = any>(url: string, config?: any) {
+    return this.client.get<T>(url, config)
+  }
+
+  async post<T = any>(url: string, data?: any, config?: any) {
+    return this.client.post<T>(url, data, config)
+  }
+
+  async put<T = any>(url: string, data?: any, config?: any) {
+    return this.client.put<T>(url, data, config)
+  }
+
+  async delete<T = any>(url: string, config?: any) {
+    return this.client.delete<T>(url, config)
+  }
+
+  async patch<T = any>(url: string, data?: any, config?: any) {
+    return this.client.patch<T>(url, data, config)
   }
 }
 
